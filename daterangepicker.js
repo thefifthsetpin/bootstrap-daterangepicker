@@ -867,15 +867,15 @@
 
             var html, selected, minDate, maxDate = this.maxDate;
 
-            if (this.dateLimit && (!this.maxDate || this.startDate.clone().add(this.dateLimit).isBefore(this.maxDate)))
-                maxDate = this.startDate.clone().add(this.dateLimit);
-
             if (side == 'left') {
                 selected = this.startDate.clone();
                 minDate = this.minDate;
             } else if (side == 'right') {
                 selected = this.endDate.clone();
                 minDate = this.startDate;
+
+                if (this.dateLimit && ( ! maxDate || this.startDate.clone().add(this.dateLimit).isBefore(maxDate)))
+                    maxDate = this.startDate.clone().add(this.dateLimit);
 
                 //Preserve the time already selected
                 var timeSelector = this.container.find('.calendar.right .calendar-time div');
