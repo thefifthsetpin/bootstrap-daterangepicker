@@ -867,7 +867,7 @@
 
             var html, selected, minDate, maxDate = this.maxDate;
 
-            if (this.dateLimit && (!this.maxDate || this.startDate.clone().add(this.dateLimit).isAfter(this.maxDate)))
+            if (this.dateLimit && (!this.maxDate || this.startDate.clone().add(this.dateLimit).isBefore(this.maxDate)))
                 maxDate = this.startDate.clone().add(this.dateLimit);
 
             if (side == 'left') {
