@@ -874,8 +874,12 @@
                 selected = this.endDate.clone();
                 minDate = this.startDate;
 
-                if (this.dateLimit && ( ! maxDate || this.startDate.clone().add(this.dateLimit).isBefore(maxDate)))
-                    maxDate = this.startDate.clone().add(this.dateLimit);
+                if (this.dateLimit){
+                    var alternativeMaxDate = this.startDate.clone().add(this.dateLimit);
+                    if ( ! maxDate || alternativeMaxDate.isBefore(maxDate)){
+                        maxDate = alternativeMaxDate;
+                    }
+                }
 
                 //Preserve the time already selected
                 var timeSelector = this.container.find('.calendar.right .calendar-time div');
